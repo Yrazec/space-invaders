@@ -1,3 +1,5 @@
+"""File for storing main functionality for Space Invaders."""
+
 import random
 
 import pygame
@@ -7,8 +9,14 @@ from libs.utils import ImageData, Object, Score, Utils
 
 
 class SpaceInvaders:
+    """Class that stores main functionality for Space Invaders."""
 
     def __init__(self, invaders_number: int) -> None:
+        """
+        Standard ImageData constructor.
+
+        :param int invaders_number: number of Invaders
+        """
 
         # Configuration files
         self.colors_conf = Colors()
@@ -59,6 +67,7 @@ class SpaceInvaders:
         self.run()
 
     def run(self) -> None:
+        """Runs Space Invaders."""
 
         # Main loop
         while self.running:
@@ -197,18 +206,45 @@ class SpaceInvaders:
             pygame.display.update()
 
     def _screen_settings(self) -> pygame.Surface:
+        """
+        Initializes and configures screen Surface.
+
+        :return: Surface object of the screen
+        """
+
         pygame.init()
         screen = pygame.display.set_mode((self.window_conf.screen_width, self.window_conf.screen_height))
         pygame.display.set_caption(self.window_conf.caption, self.window_conf.caption)
         return screen
 
     def _play_music(self, filename: str, loops: int) -> None:
+        """
+        Plays music.
+
+        :param str filename: path to music file
+        :param int loops: number of loops - how many times the music will be played
+        """
+
         pygame.mixer.music.load(filename)
         pygame.mixer.music.play(loops)
 
     def _play_sound(self, filename: str) -> None:
+        """
+        Plays single sound.
+
+        :param str filename: path to single sound file
+        """
+
         sound = pygame.mixer.Sound(filename)
         sound.play()
 
     def _blit_object(self, image: pygame.Surface, x: float, y: float) -> None:
+        """
+        Draws a source Surface onto another Surface.
+
+        :param pygame.Surface image: image to draw
+        :param float x: x coordinate
+        :param float y: y coordinate
+        """
+
         self.screen.blit(image, (x, y))
