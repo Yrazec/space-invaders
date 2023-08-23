@@ -1,7 +1,10 @@
+"""File for storing Configurations for Space Invaders."""
+
 import pydantic
 
 
 class Window(pydantic.BaseModel):
+    """Class that stores the configuration of the Window."""
 
     caption: str = pydantic.Field('Space Invaders', description='Window title.')
 
@@ -14,6 +17,7 @@ class Window(pydantic.BaseModel):
 
 
 class Colors(pydantic.BaseModel):
+    """Class that stores Colors."""
 
     white: tuple = pydantic.Field((255, 255, 255), description='White color in RGB mode.')
     black: tuple = pydantic.Field((0, 0, 0), description='Black color in RGB mode.')
@@ -28,6 +32,7 @@ class Colors(pydantic.BaseModel):
 
 
 class Resources(pydantic.BaseModel):
+    """Class that stores the paths of the Resources."""
 
     main_theme_sound = pydantic.Field('resources/sounds/main-theme.mpeg', description='Main theme sound.')
     shoot_sound = pydantic.Field('resources/sounds/shoot.wav', description='Shoot sound.')
